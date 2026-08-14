@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F.C. Metalúrgica e Inox | Excelência em Inox e Metalurgia</title>
+<meta name="description" content="Corrimãos, guarda-corpos, portões e estruturas em inox e metalurgia sob medida em Marechal Cândido Rondon - PR.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+
+<style>
+  :root{
+    --bg-deep:#0a0a0a;
+    --bg-mid:#121212;
+    --bg-card:#161616;
+    --silver-1:#f2f2f2;
+    --silver-2:#d1d5db;
+    --silver-3:#9ca3af;
+    --line:#2a2a2a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-deep);
+    color:var(--silver-2);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.display{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'JetBrains Mono',monospace;
+    letter-spacing:0.12em;
+  }
+
+  /* ---- Hex motif background ---- */
+  .hex-bg{
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.035) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(255,255,255,0.03) 0%, transparent 45%);
+    position:relative;
+  }
+  .hex-bg::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='96' viewBox='0 0 84 96'%3E%3Cpath d='M42 0 L84 24 L84 72 L42 96 L0 72 L0 24 Z' fill='none' stroke='%23ffffff' stroke-opacity='0.028' stroke-width='1'/%3E%3C/svg%3E");
+    background-size:84px 96px;
+    pointer-events:none;
+    opacity:0.6;
+  }
+
+  /* ---- Metallic gradient elements ---- */
+  .metallic-gradient{
+    background:linear-gradient(135deg,#8e8e8e 0%,#e8e8e8 22%,#ffffff 42%,#c4c4c4 58%,#7a7a7a 78%,#e0e0e0 100%);
+    background-size:220% 220%;
+    color:#0a0a0a !important;
+    transition:all .45s cubic-bezier(.2,.8,.2,1);
+  }
+  .metallic-gradient:hover{
+    background-position:80% 20%;
+    transform:translateY(-2px) scale(1.02);
+    box-shadow:0 8px 30px -6px rgba(255,255,255,0.25), 0 0 0 1px rgba(255,255,255,0.15);
+  }
+  .metallic-outline{
+    border:1px solid var(--silver-2);
+    color:var(--silver-1);
+    position:relative;
+    overflow:hidden;
+    transition:all .4s ease;
+  }
+  .metallic-outline::before{
+    content:"";
+    position:absolute; top:0; left:-120%;
+    width:60%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform:skewX(-20deg);
+    transition:left .6s ease;
+  }
+  .metallic-outline:hover::before{ left:130%; }
+  .metallic-outline:hover{
+    border-color:#fff;
+    background:rgba(255,255,255,0.06);
+    transform:translateY(-2px);
+  }
+
+  .text-gradient-silver{
+    background:linear-gradient(100deg,#8a8a8a 10%, #ffffff 35%, #b9b9b9 55%, #ffffff 75%, #8a8a8a 90%);
+    background-size:300% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:sheen 7s linear infinite;
+  }
+  @keyframes sheen{ to{ background-position:-300% center; } }
+
+  /* ---- Glass panels ---- */
+  .glass{
+    background:rgba(18,18,18,0.55);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .glass-card{
+    background:linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.008) 60%);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(209,213,219,0.12);
+    transition:all .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .glass-card:hover{
+    border-color:rgba(255,255,255,0.4);
+    transform:translateY(-6px);
+    box-shadow:0 20px 45px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  }
+
+  /* ---- Logo (round, brushed steel ring) ---- */
+  .logo-ring{
+    position:relative;
+    border-radius:50%;
+    padding:3px;
+    background:conic-gradient(from 180deg,#4b4b4b,#e8e8e8,#7a7a7a,#f5f5f5,#4b4b4b);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.15), 0 6px 22px -6px rgba(0,0,0,0.8);
+  }
+  .logo-ring img{
+    display:block;
+    border-radius:50%;
+    background:#0a0a0a;
+    object-fit:cover;
+    width:100%; height:100%;
+  }
+  .logo-ring::after{
+    content:"";
+    position:absolute; inset:-6px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.12);
+    pointer-events:none;
+  }
+
+  /* Hex icon frame for differentials */
+  .hex-frame{
+    width:64px; height:64px;
+    display:flex; align-items:center; justify-content:center;
+    clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background:linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.15);
+    color:var(--silver-1);
+    font-size:1.35rem;
+    transition:all .4s ease;
+  }
+  .glass-card:hover .hex-frame{
+    border-color:#fff;
+    box-shadow:0 0 22px -4px rgba(255,255,255,0.35);
+    color:#fff;
+  }
+
+  ::-webkit-scrollbar{width:9px;}
+  ::-webkit-scrollbar-track{background:#0a0a0a;}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(#4a4a4a,#8a8a8a);border-radius:6px;}
+
+  /* WhatsApp float pulse */
+  .wa-pulse{
+    position:relative;
+  }
+  .wa-pulse::before{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:50%;
+    background:rgba(226,232,240,0.35);
+    animation:pulseRing 2.2s cubic-bezier(0,.5,.5,1) infinite;
+  }
+  @keyframes pulseRing{
+    0%{ transform:scale(1); opacity:.6; }
+    100%{ transform:scale(2.1); opacity:0; }
+  }
+
+  .divider-hex{
+    width:14px; height:16px;
+    clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background:linear-gradient(160deg,#e8e8e8,#6b6b6b);
+  }
+
+  section{ position:relative; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid #fff;
+    outline-offset:3px;
+  }
+</style>
+</head>
+
+<body class="hex-bg">
+
+<!-- ================= HEADER ================= -->
+<header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="glass mx-3 mt-3 rounded-2xl md:mx-6 md:mt-4">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+
+      <a href="#inicio" class="flex items-center gap-3 shrink-0">
+        <div class="logo-ring w-11 h-11 md:w-12 md:h-12">
+          <img src="logo.png" alt="F.C. Metalúrgica e Inox">
+        </div>
+        <div class="hidden sm:block leading-tight">
+          <p class="display text-sm md:text-base font-semibold text-white tracking-wide">F.C. METALÚRGICA</p>
+          <p class="mono text-[9px] text-gray-400 tracking-[0.25em]">E INOX</p>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 mono text-[11px] tracking-[0.15em] text-gray-300">
+        <a href="#inicio" class="hover:text-white transition-colors">INÍCIO</a>
+        <a href="#sobre" class="hover:text-white transition-colors">SOBRE</a>
+        <a href="#servicos" class="hover:text-white transition-colors">SERVIÇOS</a>
+        <a href="#diferenciais" class="hover:text-white transition-colors">DIFERENCIAIS</a>
+        <a href="#contato" class="hover:text-white transition-colors">CONTATO</a>
+      </nav>
+
+      <a href="https://wa.me/5545998136435?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+         target="_blank" rel="noopener"
+         class="metallic-gradient hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-xs mono tracking-wide">
+        <i class="fa-solid fa-comment-dots"></i> SOLICITAR ORÇAMENTO
+      </a>
+
+      <button id="menuBtn" class="lg:hidden text-white text-xl px-2" aria-label="Abrir menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 px-6 py-5 flex flex-col gap-5 mono text-xs tracking-[0.15em] text-gray-300">
+      <a href="#inicio" class="mobile-link">INÍCIO</a>
+      <a href="#sobre" class="mobile-link">SOBRE</a>
+      <a href="#servicos" class="mobile-link">SERVIÇOS</a>
+      <a href="#diferenciais" class="mobile-link">DIFERENCIAIS</a>
+      <a href="#contato" class="mobile-link">CONTATO</a>
+      <a href="https://wa.me/5545998136435?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+         target="_blank" rel="noopener"
+         class="metallic-gradient inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold">
+        <i class="fa-solid fa-comment-dots"></i> SOLICITAR ORÇAMENTO
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="inicio" class="min-h-screen flex items-center pt-40 pb-24 px-5 md:px-10">
+  <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
+
+    <div data-aos="fade-up" data-aos-duration="900">
+      <p class="mono text-[11px] tracking-[0.35em] text-gray-400 mb-6 flex items-center gap-3">
+        <span class="divider-hex"></span> MARECHAL CÂNDIDO RONDON — PR
+      </p>
+      <h1 class="display text-4xl sm:text-5xl md:text-6xl xl:text-[4.2rem] font-semibold leading-[1.05] text-white mb-7">
+        Excelência, precisão<br>
+        e <span class="text-gradient-silver">sofisticação</span><br>
+        em inox e metalurgia.
+      </h1>
+      <p class="text-base md:text-lg text-gray-400 max-w-xl mb-10 leading-relaxed font-light">
+        Projetos sob medida para residências e empresas em Marechal Cândido Rondon e região — do traço técnico ao acabamento final, em aço inox e metal de alto padrão.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="https://wa.me/5545998136435?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+           target="_blank" rel="noopener"
+           class="metallic-gradient inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-sm mono tracking-wide">
+          <i class="fa-brands fa-whatsapp text-lg"></i> ORÇAMENTO NO WHATSAPP
+        </a>
+        <a href="https://www.instagram.com/f.c.metalurgicaeinox/" target="_blank" rel="noopener"
+           class="metallic-outline inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium text-sm mono tracking-wide">
+          <i class="fa-brands fa-instagram text-lg"></i> VER PORTFÓLIO NO INSTAGRAM
+        </a>
+      </div>
+
+      <div class="flex items-center gap-8 mt-14 pt-8 border-t border-white/10">
+        <div>
+          <p class="display text-2xl text-white font-semibold">100%</p>
+          <p class="mono text-[10px] text-gray-500 tracking-widest mt-1">SOB MEDIDA</p>
+        </div>
+        <div class="w-px h-9 bg-white/15"></div>
+        <div>
+          <p class="display text-2xl text-white font-semibold">AÇO</p>
+          <p class="mono text-[10px] text-gray-500 tracking-widest mt-1">INOX PREMIUM</p>
+        </div>
+        <div class="w-px h-9 bg-white/15"></div>
+        <div>
+          <p class="display text-2xl text-white font-semibold">PR</p>
+          <p class="mono text-[10px] text-gray-500 tracking-widest mt-1">REGIÃO OESTE</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center lg:justify-end" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="150">
+      <div class="relative">
+        <div class="absolute inset-0 rounded-full blur-3xl bg-white/10 scale-90"></div>
+        <div class="logo-ring w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 relative">
+          <img src="logo.png" alt="F.C. Metalúrgica e Inox — logo">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SOBRE ================= -->
+<section id="sobre" class="py-24 px-5 md:px-10 border-t border-white/5">
+  <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
+    <p class="mono text-[11px] tracking-[0.35em] text-gray-500 mb-5">SOBRE A F.C.</p>
+    <h2 class="display text-3xl md:text-4xl font-semibold text-white mb-6 leading-snug">
+      Cada peça é desenhada, cortada e acabada<br class="hidden md:block"> para durar — e para impressionar.
+    </h2>
+    <p class="text-gray-400 leading-relaxed max-w-2xl mx-auto font-light">
+      A F.C. Metalúrgica e Inox une técnica apurada e sensibilidade estética para transformar aço inoxidável em estruturas que unem segurança, durabilidade e um acabamento à altura de qualquer projeto — residencial ou industrial.
+    </p>
+  </div>
+</section>
+
+<!-- ================= SERVIÇOS ================= -->
+<section id="servicos" class="py-24 px-5 md:px-10 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <p class="mono text-[11px] tracking-[0.35em] text-gray-500 mb-5">O QUE FAZEMOS</p>
+      <h2 class="display text-3xl md:text-4xl font-semibold text-white">Serviços em Inox e Metalurgia</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <div class="glass-card rounded-2xl p-7" data-aos="fade-up" data-aos-delay="0">
+        <div class="hex-frame mb-6"><i class="fa-solid fa-arrow-up-right-dots"></i></div>
+        <h3 class="display text-lg text-white font-semibold mb-3">Corrimãos e Guarda-Corpos</h3>
+        <p class="text-sm text-gray-400 font-light leading-relaxed">Segurança e elegância em escadas, varandas e sacadas, com acabamento espelhado ou escovado.</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-7" data-aos="fade-up" data-aos-delay="100">
+        <div class="hex-frame mb-6"><i class="fa-solid fa-warehouse"></i></div>
+        <h3 class="display text-lg text-white font-semibold mb-3">Estruturas e Portões Sob Medida</h3>
+        <p class="text-sm text-gray-400 font-light leading-relaxed">Portões, grades e estruturas metálicas projetadas para o espaço exato do seu imóvel.</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-7" data-aos="fade-up" data-aos-delay="200">
+        <div class="hex-frame mb-6"><i class="fa-solid fa-industry"></i></div>
+        <h3 class="display text-lg text-white font-semibold mb-3">Projetos Industriais e Residenciais</h3>
+        <p class="text-sm text-gray-400 font-light leading-relaxed">Soluções personalizadas para empresas e residências, do projeto técnico à instalação.</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-7" data-aos="fade-up" data-aos-delay="300">
+        <div class="hex-frame mb-6"><i class="fa-solid fa-gem"></i></div>
+        <h3 class="display text-lg text-white font-semibold mb-3">Acabamentos e Peças Especiais</h3>
+        <p class="text-sm text-gray-400 font-light leading-relaxed">Detalhes e peças exclusivas em inox, com precisão milimétrica e acabamento premium.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIFERENCIAIS ================= -->
+<section id="diferenciais" class="py-24 px-5 md:px-10 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <p class="mono text-[11px] tracking-[0.35em] text-gray-500 mb-5">POR QUE A F.C. METALÚRGICA</p>
+      <h2 class="display text-3xl md:text-4xl font-semibold text-white">Diferenciais que fazem a diferença</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+        <div class="hex-frame mx-auto mb-5"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3 class="display text-white font-semibold mb-2">Durabilidade Extrema</h3>
+        <p class="text-sm text-gray-500 font-light">Materiais de alta resistência para durar décadas.</p>
+      </div>
+      <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="hex-frame mx-auto mb-5"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3 class="display text-white font-semibold mb-2">Acabamento Premium</h3>
+        <p class="text-sm text-gray-500 font-light">Detalhes refinados em cada corte e solda.</p>
+      </div>
+      <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="hex-frame mx-auto mb-5"><i class="fa-solid fa-handshake"></i></div>
+        <h3 class="display text-white font-semibold mb-2">Atendimento Personalizado</h3>
+        <p class="text-sm text-gray-500 font-light">Projeto pensado junto com você, do início ao fim.</p>
+      </div>
+      <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="hex-frame mx-auto mb-5"><i class="fa-solid fa-clock"></i></div>
+        <h3 class="display text-white font-semibold mb-2">Pontualidade</h3>
+        <p class="text-sm text-gray-500 font-light">Prazos combinados, prazos cumpridos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section id="contato" class="py-28 px-5 md:px-10 border-t border-white/5">
+  <div class="max-w-5xl mx-auto glass-card rounded-3xl p-10 md:p-16 text-center relative overflow-hidden" data-aos="zoom-in">
+    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/5 blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-white/5 blur-3xl"></div>
+
+    <div class="relative">
+      <div class="logo-ring w-16 h-16 mx-auto mb-8">
+        <img src="logo.png" alt="F.C. Metalúrgica e Inox">
+      </div>
+      <h2 class="display text-3xl md:text-[2.6rem] font-semibold text-white mb-5 leading-tight">
+        Vamos transformar seu projeto<br class="hidden md:block"> em realidade?
+      </h2>
+      <p class="text-gray-400 font-light mb-10 max-w-lg mx-auto">
+        Fale agora com a nossa equipe e receba um orçamento sob medida para o seu inox.
+      </p>
+
+      <a href="https://wa.me/5545998136435?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+         target="_blank" rel="noopener"
+         class="metallic-gradient inline-flex items-center gap-3 px-9 py-4 rounded-full font-semibold text-sm mono tracking-wide mb-12">
+        <i class="fa-brands fa-whatsapp text-lg"></i> FALAR COM A F.C. AGORA
+      </a>
+
+      <div class="grid sm:grid-cols-2 gap-5 max-w-md mx-auto pt-8 border-t border-white/10 text-left">
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-location-dot text-gray-300"></i>
+          <span class="text-sm text-gray-400">Marechal Cândido Rondon - PR</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-phone text-gray-300"></i>
+          <span class="text-sm text-gray-400">(45) 99813-6435</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="border-t border-white/5 py-12 px-5 md:px-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+
+    <a href="#inicio" class="flex items-center gap-3">
+      <div class="logo-ring w-10 h-10">
+        <img src="logo.png" alt="F.C. Metalúrgica e Inox">
+      </div>
+      <div class="leading-tight">
+        <p class="display text-sm font-semibold text-white">F.C. METALÚRGICA</p>
+        <p class="mono text-[9px] text-gray-500 tracking-[0.25em]">E INOX</p>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-5">
+      <a href="https://wa.me/5545998136435?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener"
+         class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-gray-300 hover:text-white hover:border-white transition-colors">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a href="https://www.instagram.com/f.c.metalurgicaeinox/" target="_blank" rel="noopener"
+         class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-gray-300 hover:text-white hover:border-white transition-colors">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+
+    <p class="mono text-[10px] text-gray-600 tracking-widest text-center md:text-right">
+      © 2026 F.C. METALÚRGICA E INOX<br class="md:hidden"> TODOS OS DIREITOS RESERVADOS
+    </p>
+  </div>
+</footer>
+
+<!-- ================= WHATSAPP FLOAT ================= -->
+<a href="https://wa.me/5545998136435?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento."
+   target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full metallic-gradient flex items-center justify-center wa-pulse shadow-2xl">
+  <i class="fa-brands fa-whatsapp text-2xl relative z-10"></i>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+<script>
+  AOS.init({ once:true, easing:'ease-out-cubic' });
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  document.querySelectorAll('.mobile-link').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
+
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.querySelector('.glass').style.background = 'rgba(10,10,10,0.75)';
+    } else {
+      header.querySelector('.glass').style.background = 'rgba(18,18,18,0.55)';
+    }
+  });
+</script>
+</body>
+</html>
